@@ -1,6 +1,6 @@
 <p align="center"><img src="Resources/AppIcon.png" width="128" alt="ClipBar-Icon"></p>
 
-# ClipBar
+# ClipBar for macOS
 
 Ein schlanker Verlauf der Zwischenablage für die macOS-Menüleiste. Er ist mein Ersatz für Maccy, nur ohne Ton und ohne Mitteilung beim Kopieren.
 
