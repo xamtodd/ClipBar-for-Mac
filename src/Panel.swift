@@ -24,7 +24,10 @@ enum AppInfo {
         guard let id else { return nil }
         if let n = names[id] { return n }
         guard let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: id) else { return nil }
-        let n = FileManager.default.displayName(atPath: url.path).replacingOccurrences(of: ".app", with: "")
+        // Bundle-Name statt Dateiname (z. B. „Xcode“ statt „Xcode 27.1“)
+        let info = Bundle(url: url)?.localizedInfoDictionary ?? Bundle(url: url)?.infoDictionary
+        let n = (info?["CFBundleDisplayName"] as? String) ?? (info?["CFBundleName"] as? String)
+            ?? FileManager.default.displayName(atPath: url.path).replacingOccurrences(of: ".app", with: "")
         names[id] = n
         return n
     }
